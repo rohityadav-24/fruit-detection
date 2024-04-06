@@ -46,3 +46,6 @@ def detect():
             'message': 'Image detected',
             'result': result
         }), 200
+
+if __name__ == '__main__':
+    app.run()

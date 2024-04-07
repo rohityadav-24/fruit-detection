@@ -1,30 +1,37 @@
-import { Metadata } from 'next'
-import { ClerkProvider } from '@clerk/nextjs'
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import { ClerkProvider } from '@clerk/nextjs';
 
-import { ModalProvider } from '@/providers/admin/modal-provider'
-import { ToastProvider } from '@/providers/admin/toast-provider'
-import { ThemeProvider } from '@/providers/admin/theme-provider'
+// import { ModalProvider } from "@/providers/admin/modal-provider";
+import { ToasterProvider } from "@/providers/admin/toast-provider";
+import { ThemeProvider } from "@/providers/admin/theme-provider";
+
+const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Dashboard",
-}
+  title: {
+    template: '%s | E-Comm',
+    default: 'Home | E-Comm',
+  },
+  description: "This is an e-comm app.",
+};
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
-}: {
-  children: React.ReactNode
-}) {
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
   return (
     <ClerkProvider>
-      <ThemeProvider
-        attribute="class"
-        defaultTheme="system"
-        enableSystem
-      >
-        <ToastProvider />
-        <ModalProvider />
-        {children}
-      </ThemeProvider>
+      <html lang="en">
+        <body className={inter.className}>
+          <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
+          <ToasterProvider />
+          {/* <ModalProvider /> */}
+          {children}
+          </ThemeProvider>
+        </body>
+      </html>
     </ClerkProvider>
-  )
+  );
 }

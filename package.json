@@ -1,26 +1,20 @@
 {
-  "name": "fds",
+  "name": "e-comm",
   "version": "0.1.0",
   "private": true,
-  "author": {
-    "name": "Ritik Tiwari",
-    "url": "https://theritiktiwari.vercel.app"
-  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint",
-    "postinstall": "prisma generate"
+    "lint": "next lint"
   },
   "prisma": {
     "schema": "src/prisma/schema.prisma"
   },
   "dependencies": {
-    "@clerk/nextjs": "^4.29.12",
+    "@clerk/nextjs": "^4.29.9",
     "@hookform/resolvers": "^3.3.4",
-    "@prisma/client": "^5.12.1",
-    "@radix-ui/react-avatar": "^1.0.4",
+    "@prisma/client": "^5.11.0",
     "@radix-ui/react-checkbox": "^1.0.4",
     "@radix-ui/react-dialog": "^1.0.5",
     "@radix-ui/react-dropdown-menu": "^2.0.6",
@@ -29,11 +23,9 @@
     "@radix-ui/react-select": "^2.0.0",
     "@radix-ui/react-separator": "^1.0.3",
     "@radix-ui/react-slot": "^1.0.2",
-    "@radix-ui/react-tabs": "^1.0.4",
     "@tanstack/react-table": "^8.15.3",
     "axios": "^1.6.8",
     "class-variance-authority": "^0.7.0",
-    "cloudinary": "^2.1.0",
     "clsx": "^2.1.0",
     "cmdk": "^1.0.0",
     "date-fns": "^3.6.0",
@@ -45,7 +37,6 @@
     "react-dom": "^18",
     "react-hook-form": "^7.51.1",
     "react-hot-toast": "^2.4.1",
-    "react-spinners": "^0.13.8",
     "recharts": "^2.12.3",
     "stripe": "^14.23.0",
     "tailwind-merge": "^2.2.2",

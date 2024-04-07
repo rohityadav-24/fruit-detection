@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
+
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -9,8 +10,7 @@ export const metadata: Metadata = {
     template: '%s | FDS',
     default: 'Home | FDS',
   },
-  description: "Ecommerce with Fruit Detection System.",
-  metadataBase: new URL('https://fds-ecom.vercel.app/'),
+  description: "This is an e-comm app.",
 };
 
 export default function RootLayout({
@@ -19,10 +19,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        {children}
-      </body>
-    </html>
+      <html lang="en">
+        <body className={inter.className}>
+          {children}
+        </body>
+      </html>
   );
 }

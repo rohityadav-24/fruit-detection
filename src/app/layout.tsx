@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     default: 'Home | FDS',
   },
   description: "Ecommerce with Fruit Detection System.",
-  metadataBase: new URL('http://localhost:3000/'),
+  metadataBase: new URL('https://fds-ecom.vercel.app/'),
 };
 
 export default function RootLayout({

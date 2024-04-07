@@ -4,8 +4,10 @@ import numpy as np
 import os
 from io import BytesIO
 import tensorflow as tf
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app, origins=[ "http://localhost:3000", "https://fds-ecom.vercel.app" ])
 
 model_path = os.path.join(os.path.dirname(__file__), 'model/model.h5')
 MODEL = tf.keras.models.load_model(model_path)

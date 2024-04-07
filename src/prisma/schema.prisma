@@ -37,9 +37,9 @@ model Order {
   storeId    String    @db.ObjectId
   store      Store     @relation(fields: [storeId], references: [id])
   orderItems OrderItem[]
-  isPaid     Boolean  @default(false)
-  phone      String
-  address    String
+  isPaid     Boolean   @default(false)
+  phone      String?
+  address    String?
   createdAt  DateTime  @default(now())
   updatedAt  DateTime  @updatedAt
 }

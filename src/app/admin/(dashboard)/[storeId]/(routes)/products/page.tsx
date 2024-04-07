@@ -24,6 +24,7 @@ const ProductsPage = async ({
     id: item.id,
     name: item.name,
     price: formatter.format(item.price),
+    stock: item.stock,
     createdAt: format(item.createdAt, 'MMMM do, yyyy'),
   }));
 

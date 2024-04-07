@@ -2,7 +2,7 @@ import Stripe from "stripe"
 import { headers } from "next/headers"
 import { NextResponse } from "next/server"
 
-import { stripe } from "@/lib/stripe"
+import { stripe } from "@/lib/admin/stripe"
 import prismadb from "@/lib/admin/prismadb"
 
 export async function POST(req: Request) {
@@ -60,8 +60,10 @@ export async function POST(req: Request) {
         },
       },
       data: {
-        isArchived: true
-      }
+        stock: {
+          decrement: 1,
+        },
+      },
     });
   }
 

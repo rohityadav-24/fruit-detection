@@ -32,7 +32,7 @@ const Index = ({ name, user, logout, response }) => {
         data.push(count);
     }
 
-    data = [5, 8, 3, 4, 9, 2, 5, 3, 1, 5, 3, 8];
+    // data = [5, 8, 3, 4, 9, 2, 5, 3, 1, 5, 3, 8];
 
     // find all the products from the orders and count the number of times they appear
     const products = response.data.map((order, index) => {
@@ -59,6 +59,8 @@ const Index = ({ name, user, logout, response }) => {
 
     productData.sort((a, b) => b.qty - a.qty);
     productData.splice(5);
+
+    console.log({ products, productData });
 
     return (
         <>

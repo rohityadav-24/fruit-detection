@@ -54,7 +54,7 @@ const Login = ({ tst, router }) => {
                             <label htmlFor="password" className="leading-7 text-sm text-gray-600">Password</label>
                             <input onChange={handleChange} value={form.password || ""} type="password" name="password" className="w-full bg-white border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8" />
                         </div>
-                        <Link href={"/auth/reset"}><a className='text-indigo-700 font-medium mb-2'>Forget Password ?</a></Link>
+                        {/* <Link href={"/auth/reset"}><a className='text-indigo-700 font-medium mb-2'>Forget Password ?</a></Link> */}
                         <input type="submit" value={"Login"} className="text-white cursor-pointer bg-black border-0 py-2 px-8 focus:outline-none hover:bg-gray-800 text-lg" />
                     </form>
                 </div>

@@ -24,6 +24,7 @@ const Header = ({ name, user, logout }) => {
                         <Link href={"/"}><a className="ml-2 mr-2 hover:text-gray-900">Home</a></Link>
                         <Link href={"/about"}><a className="ml-2 mr-2 hover:text-gray-900">About</a></Link>
                         <Link href={"/products"}><a className="ml-2 mr-2 hover:text-gray-900">All Products</a></Link>
+                        <Link href={"/check"}><a className="ml-2 mr-2 hover:text-gray-900">Check</a></Link>
                         <Link href={"/contact"}><a className="ml-2 mr-2 hover:text-gray-900">Contact</a></Link>
                         {!user.token && <Link href={"/auth"}><a className="ml-2 mr-2 hover:text-gray-900">Login</a></Link>}
                     </nav>

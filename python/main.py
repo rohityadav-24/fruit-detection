@@ -9,8 +9,19 @@ from flask_cors import CORS
 app = Flask(__name__)
 CORS(app, origins=[ "http://localhost:3000", "https://fds-ecom.vercel.app" ])
 
-model_path = os.path.join(os.path.dirname(__file__), 'model/model.h5')
+model_path = os.path.join(os.path.dirname(__file__), 'asset/model.h5')
 MODEL = tf.keras.models.load_model(model_path)
+
+def detect_label(prediction):
+    label_path = os.path.join(os.path.dirname(__file__), 'asset/labels.json')
+    with open(label_path, 'r') as file:
+        labels = json.load(file)
+
+    for key, value in labels.items():
+        if str(result) == key:
+            label_value = value
+
+    return label_value
 
 # Function to predict image
 def predict_image(img):
@@ -35,13 +46,7 @@ def detect():
     if file:
         image = tf.image.decode_image(file.read(), channels=3)
         prediction = predict_image(image)
-        
-        if prediction == 0:
-            result = True
-        elif prediction == 3:
-            result = False
-        else:
-            result = 'na'
+        result = detect_label(prediction)
 
         return jsonify({
             'type': 'success',

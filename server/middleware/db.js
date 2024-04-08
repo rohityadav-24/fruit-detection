@@ -4,6 +4,9 @@ const connectToDB = handler => async (req, res) => {
     if (mongoose.connections[0].readyState) {
         return handler(req, res);
     }
+    
+    mongoose.set('strictQuery', false);
+
     mongoose.connect(process.env.MONGO_URI).then((data) => {
         console.log(`MongoDB Connected: ${data.connection.host}`);
     }).catch((err) => {

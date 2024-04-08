@@ -6,6 +6,7 @@ const Detect = () => {
     const [uploaded, setUploaded] = useState(false);
 
     const handleImageChange = async (event) => {
+        setUploaded(false);
         setMessage("Loading...");
 
         const data = event.target.files[0];
@@ -22,6 +23,8 @@ const Detect = () => {
                 'Content-Type': 'multipart/form-data',
             },
         });
+
+        console.log({ response });
 
         if (response.data.result === false) {
             setMessage("Apple is not fresh.");

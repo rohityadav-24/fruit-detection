@@ -5,6 +5,7 @@ import os
 from io import BytesIO
 import tensorflow as tf
 from flask_cors import CORS
+import json
 
 app = Flask(__name__)
 CORS(app, origins=[ "http://localhost:3000", "https://fds-ecom.vercel.app" ])
@@ -18,7 +19,7 @@ def detect_label(prediction):
         labels = json.load(file)
 
     for key, value in labels.items():
-        if str(result) == key:
+        if str(prediction) == key:
             label_value = value
 
     return label_value

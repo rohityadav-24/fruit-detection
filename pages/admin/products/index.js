@@ -88,7 +88,7 @@ const Products = ({ name, response, user, tst, router, logout }) => {
                                     </TableHead>
                                     <TableBody>
                                         {Object.keys(currentData).map((product) => (
-                                            <TableRow style={{ cursor: "pointer" }}>
+                                            <TableRow style={{ cursor: "pointer" }} key={currentData[product]._id}>
                                                 <TableCell align='center'>
                                                     <Typography
                                                         sx={{

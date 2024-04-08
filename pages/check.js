@@ -24,21 +24,11 @@ const Detect = () => {
             },
         });
 
-        console.log({ response });
-
-        if (response.data.result === false) {
-            setMessage("Apple is not fresh.");
+        if(response.data.type === "success"){
+            setMessage(response.data.result);
+            setUploaded(response.data.result.includes("is fresh."));
             return;
         }
-
-        if (response.data.result === "na") {
-            setMessage("Please upload an apple image.");
-            return;
-        }
-
-        setUploaded(true);
-        setMessage("Apple is fresh.");
-
     }
 
     return (

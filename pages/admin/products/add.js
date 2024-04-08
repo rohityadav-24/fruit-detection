@@ -19,7 +19,8 @@ const Add = ({ name, user, logout, tst, router, response }) => {
     }
 
     const handleImageChange = async (event) => {
-        setMessage("");
+        setUploaded(false);
+        setMessage("Loading...");
 
         const data = event.target.files[0];
 
@@ -36,27 +37,22 @@ const Add = ({ name, user, logout, tst, router, response }) => {
             },
         });
 
-        if (response.data.result === false) {
-            setMessage("Apple is not fresh.");
+        if (response.data.type === "success") {
+            setMessage(response.data.result);
+            setUploaded(response.data.result.includes("is fresh."));
+
+            formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
+
+            const res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
+
+            setForm({
+                ...form,
+                image: res.data.secure_url
+            });
             return;
         }
 
-        if (response.data.result === "na") {
-            setMessage("Please upload an apple image.");
-            return;
-        }
-
-        formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
-
-        const res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
-
-        setForm({
-            ...form,
-            image: res.data.secure_url
-        });
-        setUploaded(true);
-        setMessage("Apple is fresh.");
-
+        setMessage("Failed to upload image.");
     }
 
     const handleSubmit = async (e) => {
@@ -100,7 +96,7 @@ const Add = ({ name, user, logout, tst, router, response }) => {
                                     variant="outlined"
                                 />
                                 <TextField type="file" name="name" onChange={handleImageChange} />
-                                <p className={uploaded ? "text-green-600" : "text-red-600"}>{message}</p>
+                                <p className={`${uploaded ? "text-green-600" : "text-red-600"} ${message === "Loading..." && "!text-black"}`}>{message}</p>
                                 <TextField
                                     name='price'
                                     value={form.price || ""}

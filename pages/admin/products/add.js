@@ -37,12 +37,12 @@ const Add = ({ name, user, logout, tst, router, response }) => {
         });
 
         if (response.data.result === false) {
-            setMessage("Apple is not fresh");
+            setMessage("Apple is not fresh.");
             return;
         }
 
         if (response.data.result === "na") {
-            setMessage("Please upload an apple image");
+            setMessage("Please upload an apple image.");
             return;
         }
 

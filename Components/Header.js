@@ -38,6 +38,7 @@ const Header = ({ name, user, logout }) => {
                                     <ul>
                                         <Link href={"/user"}><a><li className='my-2'>My Account</li></a></Link>
                                         <Link href={"/user/orders"}><a><li className='my-2'>My Orders</li></a></Link>
+                                        {(user.user.role === "seller") && <Link href={"/seller"}><a><li className='my-2'>Dashboard</li></a></Link>}
                                         {(user.user.role === "admin") && <Link href={"/admin"}><a><li className='my-2'>Admin</li></a></Link>}
                                         <li onClick={logout} className='cursor-pointer text-red-500 my-2'><a>Logout</a></li>
                                     </ul>

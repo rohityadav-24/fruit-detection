@@ -31,9 +31,9 @@ const Cart = ({ name, cart, subTotal, addToCart, removeFromCart, items, clearCar
                       <h2>Color : <span className={`capitalize ${(cart[k].variant === "black" || cart[k].variant === "white") ? `text-black` : `text-${cart[k].variant}-500`}`}></span>{cart[k].variant}</h2>
                       <p className="text-xl font-bold text-gray-900 title-font my-3">₹{cart[k].price}</p>
                       <p className="flex font-semibold justify-start align-baseline text-justify text-xl mt-2">
-                        <BiMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='mr-2 text-2xl cursor-pointer' />
+                        <BiMinusCircle onClick={() => { removeFromCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant, cart[k].seller_id) }} className='mr-2 text-2xl cursor-pointer' />
                         {cart[k].qty}
-                        <BiPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant) }} className='ml-2 text-2xl cursor-pointer' /></p>
+                        <BiPlusCircle onClick={() => { addToCart(k, 1, cart[k].price, cart[k].name, cart[k].size, cart[k].variant, cart[k].seller_id) }} className='ml-2 text-2xl cursor-pointer' /></p>
                     </div>
                   </div>
                 })

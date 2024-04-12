@@ -8,18 +8,21 @@ const handler = async (req, res) => {
             const token = req.body.token;
             const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-            if (data.data.role !== "admin")
+            if (data.data.role !== "seller")
                 return res.status(403).json({
                     type: "error",
                     message: "You are not authorized to perform this action"
                 });
+
+            console.log("[PRODUCT_ADD]", data.data);
 
             let p = new Product({
                 title: req.body.title,
                 slug: req.body.slug,
                 image: req.body.image,
                 price: req.body.price,
-                availableQuantity: req.body.availableQuantity
+                availableQuantity: req.body.availableQuantity,
+                seller_id: data.data.id
             });
             await p.save();
 

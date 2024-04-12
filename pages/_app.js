@@ -100,20 +100,20 @@ function MyApp({ Component, pageProps }) {
     saveCart({});
   }
 
-  const buyNow = (itemCode, qty, price, name, size, variant, image) => {
+  const buyNow = (itemCode, qty, price, name, size, variant, image, seller_id) => {
     let newCart = {};
-    newCart[itemCode] = { qty: 1, price, name, size, variant, image };
+    newCart[itemCode] = { qty: 1, price, name, size, variant, image, seller_id };
     setCart(newCart);
     saveCart(newCart);
     router.push('/checkout');
   }
 
-  const addToCart = (itemCode, qty, price, name, size, variant, image) => {
+  const addToCart = (itemCode, qty, price, name, size, variant, image, seller_id) => {
     let newCart = cart;
     if (itemCode in cart) {
       newCart[itemCode].qty = cart[itemCode].qty + qty;
     } else {
-      newCart[itemCode] = { qty: 1, price, name, size, variant, image };
+      newCart[itemCode] = { qty: 1, price, name, size, variant, image, seller_id };
     }
     setCart(newCart);
     saveCart(newCart);
@@ -180,9 +180,9 @@ function MyApp({ Component, pageProps }) {
       theme="dark"
     />
 
-    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && !router.asPath.includes("/auth") && !router.asPath.includes("/admin") && key && <Header name={name} user={user} logout={logout} />}
+    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && !router.asPath.includes("/auth") && !router.asPath.includes("/admin") && !router.asPath.includes("/seller") && key && <Header name={name} user={user} logout={logout} />}
     <Component {...pageProps} tst={tst} router={router} name={name} user={user} logout={logout} cart={cart} subTotal={subTotal} items={items} addToCart={addToCart} removeFromCart={removeFromCart} clearCart={clearCart} buyNow={buyNow} />
-    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && !router.asPath.includes("/auth") && !router.asPath.includes("/admin") && <Footer name={name} tst={tst} />}
+    {pageProps.statusCode !== 404 && pageProps.statusCode !== 500 && !router.asPath.includes("/auth") && !router.asPath.includes("/admin") && !router.asPath.includes("/seller") && <Footer name={name} tst={tst} />}
   </>
 }
 

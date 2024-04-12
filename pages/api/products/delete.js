@@ -8,13 +8,17 @@ const handler = async (req, res) => {
             const token = req.body.token;
             const data = jwt.verify(token, process.env.JWT_SECRET_KEY);
 
-            if (data.data.role !== "admin")
+            if (data.data.role === "admin") {
+                await Product.findByIdAndDelete(req.body.id);
+            } else if (data.data.role === "seller") {
+                await Product.findOneAndDelete({ _id: req.body.id, seller_id: data.data.id });
+            } else {
                 return res.status(403).json({
                     type: "error",
                     message: "You are not authorized to perform this action"
                 });
-
-            await Product.findByIdAndDelete(req.body.id);
+            }
+            
             res.status(200).json({
                 type: "success",
                 message: "Products deleted successfully"

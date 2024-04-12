@@ -71,8 +71,8 @@ const Slug = ({ name, router, tst, response, buyNow, addToCart }) => {
                 <div className="flex justify-between mt-5">
                   <span className="title-font font-medium text-2xl text-gray-900">₹{response.product.price}</span>
                   <div className="flex justify-between">
-                    <button onClick={() => { buyNow(slug, 1, response.product.price, response.product.title, size, color, response.product.image) }} className="flex text-black border bg-white border-black py-2 px-6 focus:outline-none hover:text-white hover:bg-black">Buy Now</button>
-                    <button onClick={() => { addToCart(slug, 1, response.product.price, response.product.title, size, color, response.product.image); added(); }} className="flex ml-3 text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-800">Add to Cart</button>
+                    <button onClick={() => { buyNow(slug, 1, response.product.price, response.product.title, size, color, response.product.image, response.product.seller_id) }} className="flex text-black border bg-white border-black py-2 px-6 focus:outline-none hover:text-white hover:bg-black">Buy Now</button>
+                    <button onClick={() => { addToCart(slug, 1, response.product.price, response.product.title, size, color, response.product.image, response.product.seller_id); added(); }} className="flex ml-3 text-white bg-black border-0 py-2 px-6 focus:outline-none hover:bg-gray-800">Add to Cart</button>
                   </div>
                 </div>
               </> : <div className='mt-2 mx-auto'>

@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 import { Box, Drawer, useMediaQuery, List, ListItem, ListItemIcon, ListItemText } from "@mui/material";
 import FeatherIcon from "feather-icons-react";
 import LogoIcon from "../logo/LogoIcon";
-import Menuitems from "./MenuItems";
+import { AdminMenu, SellerMenu } from "./MenuItems";
 import { useRouter } from "next/router";
 
-const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen, name }) => {
+const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen, name, user }) => {
   const [open, setOpen] = React.useState(true);
 
   const lgUp = useMediaQuery((theme) => theme.breakpoints.up("lg"));
@@ -22,13 +22,15 @@ const Sidebar = ({ isMobileSidebarOpen, onSidebarClose, isSidebarOpen, name }) =
   let curl = useRouter();
   const location = curl.pathname;
 
+  const MenuItems = user && user.user && (user.user.role === "admin") ? AdminMenu : SellerMenu;
+
   const SidebarContent = (
     <Box p={2} height="100%">
       {/* <LogoIcon name={name} /> */}
       {/* <Box mt={2}> */}
       <Box>
         <List>
-          {Menuitems.map((item, index) => (
+          {MenuItems.map((item, index) => (
             <List component="li" disablePadding key={item.title}>
               <NextLink href={item.href}>
                 <ListItem

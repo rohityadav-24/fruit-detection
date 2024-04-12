@@ -85,7 +85,7 @@ const ProductPerfomance = ({ data }) => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {data.map((product, index) => (
+          {data.length ? data.map((product, index) => (
             <TableRow key={index}>
               <TableCell align="center">
                 <Typography
@@ -121,7 +121,20 @@ const ProductPerfomance = ({ data }) => {
                 ></Chip>
               </TableCell>
             </TableRow>
-          ))}
+          )) : <TableRow>
+            <TableCell colSpan={4}>
+              <Box
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                p={2}
+              >
+                <Typography variant="h6" color="textSecondary">
+                  No data available
+                </Typography>
+              </Box>
+            </TableCell>
+          </TableRow>}
         </TableBody>
       </Table>
     </BaseCard>

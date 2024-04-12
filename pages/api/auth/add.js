@@ -5,9 +5,9 @@ var CryptoJS = require("crypto-js");
 const handler = async (req, res) => {
     try {
         if (req.method === "POST") {
-            const { name, email, password, mobile } = req.body;
+            const { name, email, password, mobile, role } = req.body;
 
-            if (!name || !email || !password || !mobile)
+            if (!name || !email || !password || !mobile || !role)
                 return res.status(400).json({
                     type: "error",
                     message: "Please fill out all fields"
@@ -50,7 +50,8 @@ const handler = async (req, res) => {
                 name,
                 email,
                 password: CryptoJS.AES.encrypt(password, process.env.CRYPTOJS_SECRET_KEY).toString(),
-                mobile
+                mobile,
+                role
             });
             await user.save();
 

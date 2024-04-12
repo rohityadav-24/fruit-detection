@@ -2,12 +2,12 @@ import React, { useState } from 'react';
 
 const Signup = ({ tst }) => {
     const [form, setForm] = useState({});
-    const { name, email, password, confirmPassword, mobile } = form;
+    const { name, email, password, confirmPassword, mobile, role } = form;
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (password === confirmPassword) {
-            const data = { name, email, password, mobile };
+            const data = { name, email, password, mobile, role };
             let res = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/auth/add`, {
                 method: "POST",
                 headers: {
@@ -36,6 +36,15 @@ const Signup = ({ tst }) => {
                 <div className="container px-5 py-10 mx-auto flex flex-wrap items-center flex-col-reverse md:flex-row">
                     <form onSubmit={handleSubmit} method="POST" className=" lg:w-2/6 md:w-1/2 bg-gray-100 p-8 flex flex-col md:mr-auto w-full mt-10 md:mt-0">
                         <h2 className="text-gray-900 text-lg font-medium title-font mb-5">Sign Up</h2>
+                        <div className="relative mb-4">
+                            {/* <label htmlFor="role" className="leading-7 text-sm text-gray-600">Select Role</label> */}
+                            <select onChange={handleChange} value={form.role || ""} name="role" className="w-full bg-white border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8">
+                                <option hidden>Select Role</option>
+                                <option value="user">User</option>
+                                <option value="seller">Seller</option>
+                            </select>
+                            {/* <input onChange={handleChange} value={form.name || ""} type="text" name="name" className="w-full bg-white border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8" /> */}
+                        </div>
                         <div className="relative mb-4">
                             <label htmlFor="name" className="leading-7 text-sm text-gray-600">User Name</label>
                             <input onChange={handleChange} value={form.name || ""} type="text" name="name" className="w-full bg-white border border-gray-300 text-base outline-none text-gray-700 py-1 px-3 leading-8" />

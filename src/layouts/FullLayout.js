@@ -45,6 +45,7 @@ const FullLayout = ({ children, name, user, logout }) => {
         toggleMobileSidebar={() => setMobileSidebarOpen(true)}
       />
       <Sidebar
+      user={user}
         name={name}
         isSidebarOpen={isSidebarOpen}
         isMobileSidebarOpen={isMobileSidebarOpen}

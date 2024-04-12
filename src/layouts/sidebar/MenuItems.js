@@ -1,4 +1,4 @@
-const Menuitems = [
+export const AdminMenu = [
   {
     title: "Dashbaord",
     icon: "home",
@@ -8,11 +8,6 @@ const Menuitems = [
     title: "Products",
     icon: "shopping-cart",
     href: "/admin/products",
-  },
-  {
-    title: "Add Product",
-    icon: "shopping-bag",
-    href: "/admin/products/add",
   },
   {
     title: "Orders",
@@ -41,4 +36,26 @@ const Menuitems = [
   },
 ];
 
-export default Menuitems;
+
+export const SellerMenu = [
+  {
+    title: "Dashbaord",
+    icon: "home",
+    href: "/seller",
+  },
+  {
+    title: "Products",
+    icon: "shopping-cart",
+    href: "/seller/products",
+  },
+  {
+    title: "Add Product",
+    icon: "shopping-bag",
+    href: "/seller/products/add",
+  },
+  {
+    title: "Orders",
+    icon: "truck",
+    href: "/seller/orders",
+  }
+];

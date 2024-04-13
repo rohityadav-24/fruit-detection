@@ -41,17 +41,22 @@ const Add = ({ name, user, logout, tst, router, response }) => {
             setMessage(response.data.result);
             setUploaded(response.data.result.includes("is fresh."));
 
-            formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
+            if (response.data.result.includes("is fresh.")) {
+                formData.append('upload_preset', process.env.NEXT_PUBLIC_CLOUDINARY_PRESET);
 
-            const res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
+                const res = await axios.post(`https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload`, formData);
 
-            if (res.data.secure_url)
-                setForm({
-                    ...form,
-                    image: res.data.secure_url
-                });
-            else
-                setMessage("Failed to upload image.");
+                if (res.data.secure_url)
+                    setForm({
+                        ...form,
+                        image: res.data.secure_url
+                    });
+                else
+                    setMessage("Failed to upload image.");
+
+                return;
+            }
+
             return;
         }
 
@@ -60,7 +65,12 @@ const Add = ({ name, user, logout, tst, router, response }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if(!form.image) {
+        if(uploaded === false) {
+            tst("Image is not fresh. Please upload fresh image.", "error");
+            return;
+        }
+        
+        if (!form.image) {
             tst("Image cannot be uploaded.", "error");
             return;
         }

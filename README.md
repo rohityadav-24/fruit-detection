@@ -1,6 +1,6 @@
-# ECOM : E-Commerce
+# FDS : E-Commerce with Fruit Detection System
 
-This is a basic ecommerce application. It provides user a great experience to buy products with secure payment.
+This is a basic ecommerce application with fruit detection. It provides user a great experience to buy products with secure payment.
 
 #### Features :
 - User authentication
@@ -9,10 +9,8 @@ This is a basic ecommerce application. It provides user a great experience to bu
 - Manage orders in cart and checkout
 - Pincode service
 - Payment gateway
-- Email service
+- Seller Dashboard
 - Admin dashboard
-
-[Click here](https://drive.google.com/drive/folders/1aW40fPqsD-kmhdh5Ij7K0GgGCOhX8Vqo?usp=sharing) for demo videos.
 
 #### Technologies :
 - [NextJS](https://nextjs.org/)
@@ -22,8 +20,7 @@ This is a basic ecommerce application. It provides user a great experience to bu
 - [Mongoose](https://mongoosejs.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [MUI](https://mui.com/)
-- [PayTM](https://www.paytm.com/)
-- [Mail API](https://mailer-ritik.vercel.app/)
+- [RazorPay](https://www.razorpay.com/)
 
 
 ## For Developers
